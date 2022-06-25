@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>web charity</title>
+  <!-- Favicon -->
+  <link rel="icon" href="" type="image/x-icon" />
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind Elements CSS -->
+  <link rel="stylesheet" href="css/index.min.css" />
+  <link rel="stylesheet" href="css/main.css">
+  <!-- font awesome icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css"
+    integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- alpine js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom styles -->
+  <style></style>
+</head>
+
+<body class="font-sans">
+  <header id="navbar" class="navbar-fixed-top text-black fixed-top z-50 w-full bg-white">
+    <div class="container mx-auto items-center flex space-x-60 p-2">
+      <div class="text-sm font-bold rounded-full bg-white p-2 text-orange-600">
+        Web charity
+      </div>
+
+      <button id="toggle" class="md:hidden grid items-center">
+        <ion-icon class="text-orange-500 shadow-2xl shadow-orange-600" name="grid-outline"></ion-icon>
+      </button>
+
+      <nav id="nav" class="fixed capitalize top-12 bg-white -right-full w-52 md:w-auto md:static transition-all">
+        <ul class="md:flex">
+          <li>
+            <a class="block p-3 md:hover:border-b-2 hover:border-orange-400 hover:text-orange-700" href="#">home</a>
+          </li>
+          <li>
+            <a class="block p-3 md:hover:border-b-2 md:hover:border-orange-400 hover:text-orange-700 border-b-2 border-transparent"
+              href="#campaigns">Campaigns</a>
+          </li>
+          <li>
+            <a class="block p-3 md:hover:border-b-2 hover:border-orange-400 hover:text-orange-700" href="#members">members</a>
+          </li>
+          <li>
+            <a class="block p-3 md:hover:border-b-2 hover:border-orange-400 hover:text-orange-700" href="#gallary">gallary</a>
+          </li>
+          <li>
+            <a class="block p-3 md:hover:border-b-2 hover:border-orange-400 hover:text-orange-700" href="#about">about</a>
+          </li>
+          <li>
+            <a class="block p-3 md:hover:border-b-2 hover:border-orange-400 hover:text-orange-700" href="#contact">contact</a>
+          </li>
+          <li
+            class="flex w-32 mb-2 md:mb-0 md:w-auto  items-center space-x-1 p-2 rounded-full  hover:text-orange-600 hover:bg-orange-200 transition-all ease-in-out duration-300 bg-orange-600 text-white">
+            <svg class="w-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+              <path
+                d="M256 416c114.9 0 208-93.1 208-208S370.9 0 256 0 48 93.1 48 208s93.1 208 208 208zM233.8 97.4V80.6c0-9.2 7.4-16.6 16.6-16.6h11.1c9.2 0 16.6 7.4 16.6 16.6v17c15.5.8 30.5 6.1 43 15.4 5.6 4.1 6.2 12.3 1.2 17.1L306 145.6c-3.8 3.7-9.5 3.8-14 1-5.4-3.4-11.4-5.1-17.8-5.1h-38.9c-9 0-16.3 8.2-16.3 18.3 0 8.2 5 15.5 12.1 17.6l62.3 18.7c25.7 7.7 43.7 32.4 43.7 60.1 0 34-26.4 61.5-59.1 62.4v16.8c0 9.2-7.4 16.6-16.6 16.6h-11.1c-9.2 0-16.6-7.4-16.6-16.6v-17c-15.5-.8-30.5-6.1-43-15.4-5.6-4.1-6.2-12.3-1.2-17.1l16.3-15.5c3.8-3.7 9.5-3.8 14-1 5.4 3.4 11.4 5.1 17.8 5.1h38.9c9 0 16.3-8.2 16.3-18.3 0-8.2-5-15.5-12.1-17.6l-62.3-18.7c-25.7-7.7-43.7-32.4-43.7-60.1.1-34 26.4-61.5 59.1-62.4zM480 352h-32.5c-19.6 26-44.6 47.7-73 64h63.8c5.3 0 9.6 3.6 9.6 8v16c0 4.4-4.3 8-9.6 8H73.6c-5.3 0-9.6-3.6-9.6-8v-16c0-4.4 4.3-8 9.6-8h63.8c-28.4-16.3-53.3-38-73-64H32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32v-96c0-17.7-14.3-32-32-32z" />
+            </svg>
+            <a class="" href="">donate us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <script type="text/javascript" src="navi.js"></script>
+  </header>
+  <!-- header -->
+  <header id="header" class="bg-fixed bg-cover md:bg-cover bg-center md:mt-12 mt-10"
+    style="background-image: url('img/flood.jpg');">
+    <div class="bg-black bg-opacity-60 pb-20 md:pt-36 pt-10 px-10 text-white">
+      <div class="text-4xl uppercase grid justify-items-center items-center justify-start">flood</div>
+      <p class="text-base capitalize py-3">a natural disaster in <b class="text-orange-500 uppercase">bangladesh</b></p>
+      <p class="text-base capitalize">
+        At least 116 people are dead, and millions of homes have flooded after days of monsoon downpours caused
+        catastrophic flooding in Bangladesh
+      </p>
+      <p class="text-base capitalize text-justify hidden md:block">Millions of people in Bangladesh have had to flee
+        their homes after heavy rainfall triggered flooding, which has killed at least 32 people.
+
+        Around 300,000 people have been moved to shelters but more than four million people are stranded near their
+        homes, which are inundated with floodwater in the country's north-east region.</p>
+      <button class="capitalize mt-5 p-2 w-36 bg-orange-600 text-white"> donate now</button>
+    </div>
+  </header>
+  <!-- block -->
+  <div class="flex justify-around px-10 space-x-1  w-full md:-mt-10 -mt-12 ">
+
+    <ul class="text-xs md:h-28  w-1/2 bg-orange-500 p-1">
+      <li class="text-black text-lg font-bold flex items-center">
+        <ion-icon class="text-white " name="person-outline"></ion-icon>
+        people
+      </li>
+      <li class="p-1">more thann -- peple stuck in flood</li>
+    </ul>
+
+    <ul class="text-xs w-1/2 bg-orange-500 p-1">
+      <li class="text-black text-lg font-bold">
+        <ion-icon name="accessibility-outline"></ion-icon>
+        people
+      </li>
+      <li class="p-1">more thann -- peple stuck in flood</li>
+    </ul>
+
+    <ul class="text-xs w-1/2 bg-orange-500 p-1">
+      <li class="text-black text-lg font-bold">
+        <ion-icon name="accessibility-outline"></ion-icon>
+        people
+      </li>
+      <li class="p-1">more thann -- peple stuck in flood</li>
+    </ul>
+
+
+  </div>
+
+
+  <!-- charity -->
+  <div id="charity" class="flex justify-between md:justify-start pt-10 px-10">
+    <div class="flex md:justify-end   items-center">
+      <div class="relative spinner-border text-orange-400 
+    animate-spin md:ml-4 inline-block md:w-72 md:h-72 w-36 h-36 border-4 rounded-full" role="status">
+      </div>
+      <span class="absolute grid items-center ">
+        <img src="img/doantioncamp.jpg" class="rounded-full md:w-64 md:h-64
+       w-32 h-32 ml-2 md:mr-4" alt="">
+      </span>
+
+    </div>
+    <div class="md:mt-20">
+      <div id="text-charity" class="grid items-center ml-5 justify-end">
+        <p class="text-xl md:text-2xl font-bold ">We Have The Power Today To Change Tomorrow!</p>
+      </div>
+      <div class="hidden md:block">
+        <div>
+          <p class="px-8 text-justify text-gray-500">Lorem ipsum dolor sit amet consectetur notted adipisicing elit sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua lonm andhn cras tincidunt lobortis feugiat
+            vivam at augue eget</p>
+        </div>
+        <div class="grid justify-center  mt-4">
+          <a href=""
+            class="flex justify-center hover:bg-orange-400 transition-all ease-in-out duration-300 rounded-lg p-3 w-32 text-white bg-orange-600">Help
+            Us</a>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="md:hidden">
+    <div>
+      <p class="px-8 text-justify text-gray-500">Lorem ipsum dolor sit amet consectetur notted adipisicing elit sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua lonm andhn cras tincidunt lobortis feugiat vivam at
+        augue eget</p>
+    </div>
+    <div class="grid justify-end px-10 mt-4">
+      <a href=""
+        class="flex justify-center hover:bg-orange-400 transition-all ease-in-out duration-300 rounded-lg p-3 w-32 text-white bg-orange-600">Help
+        Us</a>
+    </div>
+
+  </div>
+  <!-- Campaigns -->
+  <div id="campaigns" class="bg-center md:bg-cover bg-opacity-40 bg-fixed bg-contain mt-5"
+    style="background-image: url('img/flood5.jpg');">
+
+    <div id="doncamp" class="bg-black bg-opacity-70 px-10 pt-36 md:flex">
+      <div class="md:hidden grid justify-items-center bg-orange-500 text-4xl p-3 drop-shadow-xl shadow-black">
+        <p class="text-white">
+          Campaigns
+        </p>
+      </div>
+      <div id="img1" class="bg-orange-500 p-6 grid justify-items-center">
+        <img src="img/sad.jpg" class="rounded-full  w-32 h-32" alt="">
+        <p class="text-white font-bold uppercase p-2">poorchild</p>
+        <p class="text-white text-justify drop-shadow-xl shadow-black">Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Facere autem alias est officia ipsam dicta?</p>
+      </div>
+      <div id="img1" class="bg-orange-500 p-6 grid justify-items-center ">
+        <img src="img/sad1.jpg" class="rounded-full w-32 h-32" alt="">
+        <p class="text-white font-bold uppercase p-2">poorchild</p>
+        <p class="text-white text-justify drop-shadow-xl shadow-black">Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Facere autem alias est officia ipsam dicta?</p>
+      </div>
+      <div id="img1" class="bg-orange-500 p-6 grid justify-items-center ">
+        <img src="img/sad2.jpg" class="rounded-full w-32 h-32" alt="">
+        <p class="text-white font-bold uppercase p-2">poorchild</p>
+        <p class="text-white text-justify drop-shadow-xl shadow-black">Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Facere autem alias est officia ipsam dicta?</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- members -->
+  <div id="members" class="px-10 bg-orange-500 pt-16">
+    <div class="px-6 mx-auto">
+
+
+      <section class="mb-32 text-gray-800 text-center">
+        <h2 class="text-3xl font-bold mb-12">Meet the <b class="text-white capitalize font-light ">team</b></h2>
+
+        <div class="grid md:grid-cols-3 gap-x-6 lg:gap-x-12">
+          <div class="mb-6 lg:mb-0">
+            <div class="bg-white block rounded-lg shadow-lg">
+              <div class="relative overflow-hidden bg-no-repeat bg-cover">
+                <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="w-full rounded-t-lg" />
+                <a href="#!">
+                  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
+                  style="left: 0; bottom: 0">
+                  <path fill="#fff"
+                    d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="p-6">
+                <h5 class="text-lg font-bold mb-4">Maria Smith</h5>
+                <p class="text-gray-500 mb-4 capitalize">fundraiser</p>
+                <ul class="list-inside flex mx-auto justify-center">
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+                    </svg>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6 lg:mb-0">
+            <div class="bg-white block rounded-lg shadow-lg">
+              <div class="relative overflow-hidden bg-no-repeat bg-cover">
+                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="w-full rounded-t-lg" />
+                <a href="#!">
+                  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
+                  style="left: 0; bottom: 0">
+                  <path fill="#fff"
+                    d="M0,96L48,128C96,160,192,224,288,240C384,256,480,224,576,213.3C672,203,768,213,864,202.7C960,192,1056,160,1152,128C1248,96,1344,64,1392,48L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="p-6">
+                <h5 class="text-lg font-bold mb-4">Darren Randolph</h5>
+                <p class="text-gray-500 mb-4">product distributor</p>
+                <ul class="list-inside flex mx-auto justify-center">
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+                    </svg>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="">
+            <div class="bg-white block rounded-lg shadow-lg">
+              <div class="relative overflow-hidden bg-no-repeat bg-cover">
+                <img src="https://mdbootstrap.com/img/new/avatars/15.jpg" class="w-full rounded-t-lg" />
+                <a href="#!">
+                  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
+                  style="left: 0; bottom: 0">
+                  <path fill="#fff"
+                    d="M0,288L48,256C96,224,192,160,288,160C384,160,480,224,576,213.3C672,203,768,117,864,85.3C960,53,1056,75,1152,69.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="p-6">
+                <h5 class="text-lg font-bold mb-4">Ayat Black</h5>
+                <p class="text-gray-500 mb-4">supplier</p>
+                <ul class="list-inside flex mx-auto justify-center">
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+                    </svg>
+                  </a>
+                  <a href="#!" class="px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4  text-orange-500">
+                      <path fill="currentColor"
+                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                    </svg>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+
+  </div>
+
+  <!-- gallary sm screen-->
+  <div id="gallary" class=" md:hidden">
+    <div class="py-4 grid justify-items-center font-bold text-xl">people we helped</div>
+    <div>
+      <div class="grid px-2 py-1 md:px-10 md:py-2.5">
+        <div class="grid grid-cols-2">
+          <img class="px-1" src="img/flood1.jpg" alt="">
+          <img class="px-1" src="img/flood2.jpg" alt="">
+        </div>
+      </div>
+      <div class="grid px-2 py-1 md:px-10 md:py-2.5">
+        <div class="grid grid-cols-2">
+          <img class="px-1" src="img/fllod3.jpg" alt="">
+          <img class="px-1" src="img/flood.jpg" alt="">
+        </div>
+      </div>
+      <div class="grid px-5 md:px-16">
+        <div class="grid grid-cols-2">
+          <img class="px-1" src="img/fllod4.jpg" alt="">
+          <img class="px-1" src="img/flood5.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- gallary md screen-->
+  <div id="gallary" class="hidden md:block">
+    <div class="py-4 grid justify-items-center font-bold text-xl">people we helped</div>
+    <div>
+      <div class="grid px-2 py-1 md:px-10 md:py-2.5">
+        <div class="grid grid-cols-3">
+          <img class="px-1" src="img/flood1.jpg" alt="">
+          <img class="px-1" src="img/flood2.jpg" alt="">
+          <img class="px-1" src="img/fllod3.jpg" alt="">
+        </div>
+      </div>
+      <div class="grid px-5 md:px-16">
+        <div class="grid grid-cols-3">
+          <img class="px-1" src="img/fllod4.jpg" alt="">
+          <img class="px-1" src="img/flood5.jpg" alt="">
+          <img class="px-1" src="img/flood.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- about -->
+  <div id="about" class="mt-36 ">
+    <div class="grid grid-cols-2 px-10">
+      <!-- <img class="w-[80vw] h-[80vh]" src="img/about-flood.jpg" alt=""> -->
+      <div class="bg-fixed bg-contain bg-center" style="background-image: url(img/about-flood.jpg);">
+        <h1
+          class="md:grid md:justify-items-center md:p-48 text-white text-lg pt-40 pl-10 font-bold md:text-6xl uppercase">
+          about</h1>
+      </div>
+      <div id="textabout" class="bg-orange-500 p-1">
+        <p class="py-5 font-bold text-xl justify-center flex capitalize">flood in bd</p>
+        <p class="py-1 md:px-5 text-gray-700">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut magni animi
+          beatae consectetur maxime, voluptatibus ab, veniam porro culpa magnam corrupti libero nisi quis ipsum tempora.
+          <a href="" class="text-violet-500">click here</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- contact section -->
+
+  <div id="contact" class="container my-24 px-6 mx-auto">
+
+
+    <section class="mb-32 text-gray-800">
+      <div class="relative overflow-hidden bg-no-repeat bg-cover"
+        style="background-position: 50%; background-image: url('img/flood2.jpg'); height: 300px;">
+      </div>
+      <div class="container text-gray-800 px-4 md:px-12">
+        <div class="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6"
+          style="margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);">
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12">
+            <div class="mb-12 lg:mb-0 text-center mx-auto">
+              <svg class="w-8 h-8  text-orange-500 mb-6 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 496 512">
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path fill="currentColor"
+                  d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm82.29 357.6c-3.9 3.88-7.99 7.95-11.31 11.28-2.99 3-5.1 6.7-6.17 10.71-1.51 5.66-2.73 11.38-4.77 16.87l-17.39 46.85c-13.76 3-28 4.69-42.65 4.69v-27.38c1.69-12.62-7.64-36.26-22.63-51.25-6-6-9.37-14.14-9.37-22.63v-32.01c0-11.64-6.27-22.34-16.46-27.97-14.37-7.95-34.81-19.06-48.81-26.11-11.48-5.78-22.1-13.14-31.65-21.75l-.8-.72a114.792 114.792 0 0 1-18.06-20.74c-9.38-13.77-24.66-36.42-34.59-51.14 20.47-45.5 57.36-82.04 103.2-101.89l24.01 12.01C203.48 89.74 216 82.01 216 70.11v-11.3c7.99-1.29 16.12-2.11 24.39-2.42l28.3 28.3c6.25 6.25 6.25 16.38 0 22.63L264 112l-10.34 10.34c-3.12 3.12-3.12 8.19 0 11.31l4.69 4.69c3.12 3.12 3.12 8.19 0 11.31l-8 8a8.008 8.008 0 0 1-5.66 2.34h-8.99c-2.08 0-4.08.81-5.58 2.27l-9.92 9.65a8.008 8.008 0 0 0-1.58 9.31l15.59 31.19c2.66 5.32-1.21 11.58-7.15 11.58h-5.64c-1.93 0-3.79-.7-5.24-1.96l-9.28-8.06a16.017 16.017 0 0 0-15.55-3.1l-31.17 10.39a11.95 11.95 0 0 0-8.17 11.34c0 4.53 2.56 8.66 6.61 10.69l11.08 5.54c9.41 4.71 19.79 7.16 30.31 7.16s22.59 27.29 32 32h66.75c8.49 0 16.62 3.37 22.63 9.37l13.69 13.69a30.503 30.503 0 0 1 8.93 21.57 46.536 46.536 0 0 1-13.72 32.98zM417 274.25c-5.79-1.45-10.84-5-14.15-9.97l-17.98-26.97a23.97 23.97 0 0 1 0-26.62l19.59-29.38c2.32-3.47 5.5-6.29 9.24-8.15l12.98-6.49C440.2 193.59 448 223.87 448 256c0 8.67-.74 17.16-1.82 25.54L417 274.25z" />
+              </svg>
+              <h6 class="font-medium">Bangladesh</h6>
+            </div>
+            <div class="mb-12 lg:mb-0 text-center mx-auto">
+              <svg class="w-8 h-8  text-orange-500 mb-6 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512">
+                <path fill="currentColor"
+                  d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                </path>
+              </svg>
+              <h6 class="font-medium"><a href="https://goo.gl/maps/Nr3N6kLfCf5GvcQk9">Rajshahi</a></h6>
+            </div>
+            <div class="mb-6 md:mb-0 text-center mx-auto">
+              <svg class="w-8 h-8  text-orange-500 mb-6 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512">
+                <path fill="currentColor"
+                  d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
+                </path>
+              </svg>
+              <h6 class="font-medium">01997695202</h6>
+            </div>
+            <div class="text-center mx-auto">
+              <svg class="w-8 h-8  text-orange-500 mb-6 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512">
+                <path fill="currentColor"
+                  d="M271.06,144.3l54.27,14.3a8.59,8.59,0,0,1,6.63,8.1c0,4.6-4.09,8.4-9.12,8.4h-35.6a30,30,0,0,1-11.19-2.2c-5.24-2.2-11.28-1.7-15.3,2l-19,17.5a11.68,11.68,0,0,0-2.25,2.66,11.42,11.42,0,0,0,3.88,15.74,83.77,83.77,0,0,0,34.51,11.5V240c0,8.8,7.83,16,17.37,16h17.37c9.55,0,17.38-7.2,17.38-16V222.4c32.93-3.6,57.84-31,53.5-63-3.15-23-22.46-41.3-46.56-47.7L282.68,97.4a8.59,8.59,0,0,1-6.63-8.1c0-4.6,4.09-8.4,9.12-8.4h35.6A30,30,0,0,1,332,83.1c5.23,2.2,11.28,1.7,15.3-2l19-17.5A11.31,11.31,0,0,0,368.47,61a11.43,11.43,0,0,0-3.84-15.78,83.82,83.82,0,0,0-34.52-11.5V16c0-8.8-7.82-16-17.37-16H295.37C285.82,0,278,7.2,278,16V33.6c-32.89,3.6-57.85,31-53.51,63C227.63,119.6,247,137.9,271.06,144.3ZM565.27,328.1c-11.8-10.7-30.2-10-42.6,0L430.27,402a63.64,63.64,0,0,1-40,14H272a16,16,0,0,1,0-32h78.29c15.9,0,30.71-10.9,33.25-26.6a31.2,31.2,0,0,0,.46-5.46A32,32,0,0,0,352,320H192a117.66,117.66,0,0,0-74.1,26.29L71.4,384H16A16,16,0,0,0,0,400v96a16,16,0,0,0,16,16H372.77a64,64,0,0,0,40-14L564,377a32,32,0,0,0,1.28-48.9Z">
+                </path>
+              </svg>
+              <h6 class="font-medium">Bkash: 01997695202</h6>
+            </div>
+          </div>
+          <div class="max-w-[700px] mx-auto">
+            <form>
+              <div class="form-group mb-6">
+                <input type="text" class="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-orange-500 focus:outline-none" id="exampleInput7"
+                  placeholder="Name">
+              </div>
+              <div class="form-group mb-6">
+                <input type="email" class="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-orange-500 focus:outline-none" id="exampleInput8"
+                  placeholder="Email address">
+              </div>
+              <div class="form-group mb-6">
+                <textarea class="
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-orange-500 focus:outline-none
+            " id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group form-check text-center mb-6">
+                <input type="checkbox"
+                  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-orange-600checked:border-orange-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                  id="exampleCheck87" checked>
+                <label class="form-check-label inline-block text-gray-800" for="exampleCheck87">Send me a copy of this
+                  message</label>
+              </div>
+              <button type="submit" class="
+            w-full
+            px-6
+            py-2.5
+            bg-orange-600
+            text-white
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            rounded
+            shadow-md
+            hover:bg-orange-700hover:shadow-lg
+            focus:bg-orange-700focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-orange-800active:shadow-lg
+            transition
+            duration-150
+            ease-in-out">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </div>
+
+  <!-- footer -->
+  <footer class="text-center lg:text-left bg-gray-900  text-white">
+    <div class="flex justify-center items-center lg:justify-between p-2 border-b border-gray-300">
+      <div class="mr-12 hidden lg:block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <div class="flex justify-center ">
+        <!-- facebook -->
+        <a href="https://www.facebook.com/thewolion" class="mr-6 text-white hover:text-blue-500">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" class="w-2.5" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path fill="currentColor"
+              d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
+            </path>
+          </svg>
+        </a>
+        <!-- twitter -->
+        <a href="#!" class="mr-6 text-white hover:text-sky-500">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="w-4" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+            </path>
+          </svg>
+        </a>
+        <!-- google -->
+        <a href="#!" class="mr-6 text-white hover:text-blue-600">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" class="w-3.5" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+            <path fill="currentColor"
+              d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
+            </path>
+          </svg>
+        </a>
+        <!-- insta -->
+        <a href="#!" class="mr-6 text-white hover:text-pink-500">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="w-3.5" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor"
+              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+            </path>
+          </svg>
+        </a>
+        <!-- linkdin -->
+        <a href="#!" class="mr-6 text-white hover:text-blue-700">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="w-3.5" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor"
+              d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+            </path>
+          </svg>
+        </a>
+        <!-- github -->
+        <a href="#!" class="text-white hover:text-gray-500">
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" class="w-4" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="currentColor"
+              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!--  -->
+    <div>
+      <form action="" class="mt-8">
+        <div class="grid md:grid-cols-3 gird-cols-1 gap-4 flex justify-center items-center">
+          <div class="md:ml-auto md:mb-6">
+            <p class="">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+
+          <div class="md:mb-6">
+            <input type="text" class="
+          form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        " id="exampleFormControlInput1" placeholder="Email address" />
+          </div>
+
+          <div class="md:mr-auto mb-6">
+            <button type="submit"
+              class="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+              <a target="_blank" href="mailto:thewolion@gmail.com">Subscribe</a>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--  -->
+    <div class="mx-6 pb-10  text-center md:text-left">
+      <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="">
+          <h6 class="
+            uppercase
+            font-semibold
+            mb-4
+            flex
+            items-center
+            justify-center
+            md:justify-start
+             text-orange-500
+          ">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cubes" class="w-4 mr-3" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
+              </path>
+            </svg>
+            Charity Template
+          </h6>
+          <p class="text-justify">
+
+            Helping others is thought to be one of the ways that people create, maintain, and strengthen their social
+            connections. For example, volunteering and helping others can help us feel a sense of belonging, make new
+            friends, and connect with our communities.
+          </p>
+        </div>
+        <div class="">
+          <h6 class="uppercase font-semibold mb-4 flex  text-orange-500 text-orange-500justify-center md:justify-start">
+            Help Now
+          </h6>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Payment by bank</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Payment by Bkash</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Payment by Rocket</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Payment by Nogod</a>
+          </p>
+        </div>
+        <div class="">
+          <h6
+            class="uppercase  text-orange-500 font-semibold mb-4 flex  text-orange-500justify-center md:justify-start">
+            LEGAL DOCUMENTS
+          </h6>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Privacy Policy</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Terms and condition</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!" class="text-white">Anti Copyright</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Creative Commons</a>
+          </p>
+        </div>
+        <div class="">
+          <h6 class="uppercase font-semibold mb-4  text-orange-500 flex justify-center md:justify-start">
+            Contact
+          </h6>
+          <p class="flex items-center justify-center md:justify-start mb-4">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" class="w-12 mr-4" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <path fill="currentColor"
+                d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
+              </path>
+            </svg>
+            38/Bagdhani-20, Bagdhani-6210, Naohata, Poba, Rajshahi
+          </p>
+          <p class="flex items-center justify-center md:justify-start mb-4">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="w-4 mr-4" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+              </path>
+            </svg>
+            thewolion@gmail.com
+          </p>
+          <p class="flex items-center justify-center md:justify-start mb-4">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="w-4 mr-4" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
+              </path>
+            </svg>
+            01997695202
+          </p>
+          <p class="flex items-center justify-center md:justify-start">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print" class="w-4 mr-4" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
+              </path>
+            </svg>
+            01716902313
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-6 bg-gray-900">
+      <span>© 2022 Copyright:</span>
+      <a class="text-gray-600 font-semibold" href="m.me/thewolion">Asif Khan</a>
+    </div>
+  </footer>
+
+
+</body>
+<!-- ion icons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- Tailwind Elements JS -->
+<script type="text/javascript" src="js/index.min.js"></script>
+<!-- Custom scripts -->
+<script type="text/javascript"> </script>
+
+</html>
